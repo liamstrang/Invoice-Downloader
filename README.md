@@ -1,7 +1,7 @@
 # Automated Invoice Downloader
 
-<a href="https://github.com/liamstrang/Download-Invoices/actions/workflows/test.yaml">
-  <img src="https://github.com/liamstrang/Download-Invoices/actions/workflows/test.yaml/badge.svg" alt="Workflow status badge" height="20">
+<a href="https://github.com/liamstrang/Invoice-Downloader/actions/workflows/test.yaml">
+  <img src="https://github.com/liamstrang/Invoice-Downloader/actions/workflows/test.yaml/badge.svg" alt="Workflow status badge" height="20">
 </a>
 
 ## Instructions
