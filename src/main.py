@@ -59,6 +59,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading 4CABLING Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_4cabling(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/4cabling", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -73,6 +78,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading INGRAM Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_ingram(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/ingram", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -87,6 +97,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading DYNAMIC Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_dynamic(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/dynamic", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -101,6 +116,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading POWERHOUSEPC Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_powerhouse(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/powerhouse", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -115,6 +135,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading DICKERDATA Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_dicker(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/dicker", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -129,6 +154,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading HYKA Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_hyka(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/hyka", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -143,6 +173,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading MMT Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_mmt(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/multimedia", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -157,6 +192,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading Austronic Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_austronic(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/austronic", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -171,6 +211,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading Anixter Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_anixter(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/anixter", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
@@ -185,6 +230,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading Force Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_force(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/force", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
 
