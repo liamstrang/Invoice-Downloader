@@ -1,4 +1,5 @@
 from download import *
+from merge import *
 import coloredlogs, logging
 import datetime
 
@@ -39,6 +40,11 @@ def main():
                 endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
                 logger.debug("Downloading Leader Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
                 download_leader(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/leader", mergeChoice)
+                   mergeMenu = False
                 subMenu = False
                 subMenu2 = False
       
