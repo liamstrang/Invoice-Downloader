@@ -16,8 +16,13 @@ today = time.strftime("%d%m%Y")
 downloadDir = str(Path.home() / "Downloads")
 
 host = getenv.EMAIL_HOST
-username = getenv.EMAIL_USER
-password = getenv.EMAIL_PASS
+
+username_receiving = getenv.EMAIL_USER_RECEIVING
+password_receiving = getenv.EMAIL_PASS_RECEIVING
+
+username_receivable = getenv.EMAIL_USER_RECEIVABLE
+password_receivable = getenv.EMAIL_PASS_RECEIVABLE
+
 download_folder = downloadDir+'/'+today
 
 if not os.path.isdir(download_folder):
@@ -29,8 +34,8 @@ def download_leader(startDate, endDate):
     print(30*"-")
 
     query = A(from_='ar@leadersystems.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -50,8 +55,8 @@ def download_4cabling(startDate, endDate):
     print(30*"-")
 
     query = A(from_='invoices@4cabling.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -71,8 +76,8 @@ def download_ingram(startDate, endDate):
     print(30*"-")
 
     query = A(from_='Maricar.Adem@ingrammicro.com', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -92,8 +97,8 @@ def download_dynamic(startDate, endDate):
     print(30*"-")
 
     query = A(from_='notifications@ds.net.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/octet-stream"):
@@ -113,8 +118,8 @@ def download_powerhouse(startDate, endDate):
     print(30*"-")
 
     query = A(from_='henry@powerhousepc.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -134,8 +139,8 @@ def download_dicker(startDate, endDate):
     print(30*"-")
 
     query = A(from_='noreply@dickerdata.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/octet-stream"):
@@ -155,8 +160,8 @@ def download_hyka(startDate, endDate):
     print(30*"-")
 
     query = A(text='invoice from hyka', from_='groupaccounts@cx.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -176,8 +181,8 @@ def download_mmt(startDate, endDate):
     print(30*"-")
 
     query = A(from_='cs@mmt.com.au', subject='MMT Invoice', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -197,8 +202,8 @@ def download_mmt(startDate, endDate):
     print(30*"-")
 
     query = A(from_='cs@mmt.com.au', subject='MMT Invoice', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -218,8 +223,8 @@ def download_austronic(startDate, endDate):
     print(30*"-")
 
     query = A(from_='dispatch@computercables.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -239,8 +244,8 @@ def download_anixter(startDate, endDate):
     print(30*"-")
 
     query = A(from_='eInvoice_Notification@anixter.com', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -260,8 +265,8 @@ def download_force(startDate, endDate):
     print(30*"-")
 
     query = A(from_='accounts@forcetechnology.com.au', subject='Force Technology International Invoices', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
-    with MailBox(host).login(username, password, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=False):
             for att in msg.attachments:
                 if(att.content_type == "application/octet-stream"):
@@ -275,4 +280,23 @@ def download_force(startDate, endDate):
                     except:
                         print(traceback.print_exc())
 
+def download_alloys(startDate, endDate):
+    print(30*"-")
+    logger.critical("ALLOYS INVOICES")
+    print(30*"-")
 
+    query = A(from_='orders@alloys.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day)) #, seen=False)
+    with MailBox(host).login(username_receivable, password_receivable, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receivable)
+        for msg in mailbox.fetch(query, mark_seen=False):
+            for att in msg.attachments:
+                if(att.content_type == "application/pdf"):
+                    subjectEmail = att.filename
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        download_path = f"{download_folder}/alloys"
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())
