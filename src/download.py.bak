@@ -27,9 +27,6 @@ download_folder = downloadDir+'/'+today
 
 if not os.path.isdir(download_folder):
     os.makedirs(download_folder, exist_ok=True)
-    
-    
-#ADD NEWMAGIC, BLUECHIP, COMSOL
 
 def download_leader(startDate, endDate):
     print(30*"-")
