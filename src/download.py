@@ -345,3 +345,24 @@ def download_comsol(startDate, endDate):
                         open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
                     except:
                         print(traceback.print_exc())
+
+def download_streakwave(startDate, endDate):
+    print(30*"-")
+    logger.critical("STREAKWAVE INVOICES")
+    print(30*"-")
+
+    query = A(subject='Streakwave Pty Ltd Invoice', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day), seen=False)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
+        for msg in mailbox.fetch(query, mark_seen=True):
+            for att in msg.attachments:
+                if(att.content_type == "application/pdf"):
+                    subjectEmail = att.filename
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        download_path = f"{download_folder}/streakwave"
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())
