@@ -310,8 +310,8 @@ def download_bluechip(startDate, endDate):
     print(30*"-")
 
     query = A(from_='statements@bluechipit.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day), seen=False)
-    with MailBox(host).login(username_receivable, password_receivable, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username_receivable)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=True):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
@@ -331,8 +331,8 @@ def download_comsol(startDate, endDate):
     print(30*"-")
 
     query = A(from_='system@sent-via.netsuite.com', subject='Comsol Invoice', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day), seen=False)
-    with MailBox(host).login(username_receivable, password_receivable, 'Inbox') as mailbox:
-        logger.warning("Logged Into: "+username_receivable)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=True):
             for att in msg.attachments:
                 if(att.content_type == "application/pdf"):
