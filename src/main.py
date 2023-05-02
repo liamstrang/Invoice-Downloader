@@ -28,6 +28,7 @@ def main():
       print("12. Download Alloys Invoices")
       print("13. Download Bluechip Invoices")
       print("14. Download Comsol Invoices")
+      print("15. Download Streakwave Invoices")
       print("20. Exit")
       print(79*"-")
       choice=int(input("Enter your choice [1-20]:"))
