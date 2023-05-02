@@ -303,3 +303,45 @@ def download_alloys(startDate, endDate):
                         open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
                     except:
                         print(traceback.print_exc())
+
+def download_bluechip(startDate, endDate):
+    print(30*"-")
+    logger.critical("BLUECHIP INVOICES")
+    print(30*"-")
+
+    query = A(from_='statements@bluechipit.com.au', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day), seen=False)
+    with MailBox(host).login(username_receivable, password_receivable, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receivable)
+        for msg in mailbox.fetch(query, mark_seen=True):
+            for att in msg.attachments:
+                if(att.content_type == "application/pdf"):
+                    subjectEmail = att.filename
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        download_path = f"{download_folder}/bluechip"
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())
+
+def download_comsol(startDate, endDate):
+    print(30*"-")
+    logger.critical("COMSOL INVOICES")
+    print(30*"-")
+
+    query = A(from_='system@sent-via.netsuite.com', subject='Comsol Invoice', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day), seen=False)
+    with MailBox(host).login(username_receivable, password_receivable, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receivable)
+        for msg in mailbox.fetch(query, mark_seen=True):
+            for att in msg.attachments:
+                if(att.content_type == "application/pdf"):
+                    subjectEmail = att.filename
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        download_path = f"{download_folder}/comsol"
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())

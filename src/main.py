@@ -26,6 +26,8 @@ def main():
       print("10. Download Anixter Invoices")
       print("11. Download Force Invoices")
       print("12. Download Alloys Invoices")
+      print("13. Download Bluechip Invoices")
+      print("14. Download Comsol Invoices")
       print("20. Exit")
       print(79*"-")
       choice=int(input("Enter your choice [1-20]:"))
@@ -254,6 +256,44 @@ def main():
                 while mergeMenu:
                    mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
                    merge(datafeedDir+"/alloys", mergeChoice)
+                   mergeMenu = False
+                subMenu = False
+                subMenu2 = False
+
+      if choice == 13:
+         subMenu = True
+         while subMenu:
+            subChoice=input("Enter the START date for the download (eg: 18/04/2022): ")
+            subMenu2 = True
+            while subMenu2:
+                subChoice2=input("Enter the END date for the download (eg: 25/04/2022): ")
+                startDate = datetime.datetime.strptime(subChoice, "%d/%m/%Y")
+                endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
+                logger.debug("Downloading Bluechip Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
+                download_bluechip(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/bluechip", mergeChoice)
+                   mergeMenu = False
+                subMenu = False
+                subMenu2 = False
+
+      if choice == 14:
+         subMenu = True
+         while subMenu:
+            subChoice=input("Enter the START date for the download (eg: 18/04/2022): ")
+            subMenu2 = True
+            while subMenu2:
+                subChoice2=input("Enter the END date for the download (eg: 25/04/2022): ")
+                startDate = datetime.datetime.strptime(subChoice, "%d/%m/%Y")
+                endDate = datetime.datetime.strptime(subChoice2, "%d/%m/%Y")
+                logger.debug("Downloading Comsol Invoices - Starting: "+subChoice+" Ending: "+subChoice2)
+                download_comsol(startDate, endDate)
+                mergeMenu = True
+                while mergeMenu:
+                   mergeChoice=input("Do you want to merge the downloaded invoices (Y or N): ")
+                   merge(datafeedDir+"/comsol", mergeChoice)
                    mergeMenu = False
                 subMenu = False
                 subMenu2 = False
