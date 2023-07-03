@@ -377,7 +377,7 @@ def download_manual(input):
         logger.warning("Logged Into: "+username_receiving)
         for msg in mailbox.fetch(query, mark_seen=True):
             for att in msg.attachments:
-                if(att.content_type == "application/pdf"):
+                if(att.content_type == "application/pdf" or att.content_type == "application/octet-stream"):
                     subjectEmail = att.filename
                     logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
                     try:
@@ -392,7 +392,7 @@ def download_manual(input):
         logger.warning("Logged Into: "+username_receivable)
         for msg in mailbox.fetch(query, mark_seen=True):
             for att in msg.attachments:
-                if(att.content_type == "application/pdf"):
+                if(att.content_type == "application/pdf" or att.content_type == "application/octet-stream"):
                     subjectEmail = att.filename
                     logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
                     try:
