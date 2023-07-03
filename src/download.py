@@ -366,3 +366,39 @@ def download_streakwave(startDate, endDate):
                         open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
                     except:
                         print(traceback.print_exc())
+
+def download_manual(input):
+    print(30*"-")
+    logger.critical("MANUAL INVOICE DOWNLOAD")
+    print(30*"-")
+
+    query = A(text=input)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
+        for msg in mailbox.fetch(query, mark_seen=True):
+            for att in msg.attachments:
+                if(att.content_type == "application/pdf"):
+                    subjectEmail = att.filename
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        download_path = f"{download_folder}/manual"
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())
+
+    with MailBox(host).login(username_receivable, password_receivable, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receivable)
+        for msg in mailbox.fetch(query, mark_seen=True):
+            for att in msg.attachments:
+                if(att.content_type == "application/pdf"):
+                    subjectEmail = att.filename
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        download_path = f"{download_folder}/manual"
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())

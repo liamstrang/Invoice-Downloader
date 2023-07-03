@@ -29,6 +29,9 @@ def main():
       print("13. Download Bluechip Invoices")
       print("14. Download Comsol Invoices")
       print("15. Download Streakwave Invoices")
+      print(20*"-")
+      print("16. BETA - Manual Download")
+      print(20*"-")
       print("20. Exit")
       print(79*"-")
       choice=int(input("Enter your choice [1-20]:"))
@@ -317,6 +320,14 @@ def main():
                    mergeMenu = False
                 subMenu = False
                 subMenu2 = False
+
+      if choice == 16:
+         subMenu = True
+         while subMenu:
+            subChoice=input("Enter the PO number OR Invoice Number: ")
+            logger.debug("Locating Invoice: "+subChoice)
+            download_manual(subChoice)
+            subMenu = False
 
       elif choice==20:
          menu = False
