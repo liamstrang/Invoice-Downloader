@@ -13,8 +13,15 @@
 
 ## Usage
 
+### Automatic Download
 1. Open `fetch.bat`
 2. Type the number of the corresponding supplier to download
 3. Enter the start date (eg 14/04/2023)
 4. Enter the end date (eg 23/04/2023)
 5. Invoices will begin to download to `Downloads/*todaysDate*/*SupplierName*`
+
+### Manual Download
+1. Open `fetch.bat`
+2. Type the number of the manual download
+3. Type the invoice or PO number
+5. Invoices will begin to download to `Downloads/manual/*SupplierName*`
