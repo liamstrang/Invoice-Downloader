@@ -6,6 +6,8 @@ import datetime
 from pathlib import Path
 import coloredlogs, logging
 import re
+import zipfile
+import io
 
 import getenv
 
@@ -364,6 +366,30 @@ def download_streakwave(startDate, endDate):
                         if not os.path.isdir(download_path):
                             os.makedirs(download_path, exist_ok=True)
                         open(download_path+"/"+subjectEmail, 'wb').write(att.payload)
+                    except:
+                        print(traceback.print_exc())
+
+def download_synnex(startDate, endDate):
+    print(30*"-")
+    logger.critical("SYNNEX INVOICES")
+    print(30*"-")
+
+    download_path = f"{download_folder}/synnex"
+    query = A(from_='noreply@synnex-grp.com', date_gte=datetime.date(startDate.year, startDate.month, startDate.day), date_lt=datetime.date(endDate.year, endDate.month, endDate.day), seen=False)
+    with MailBox(host).login(username_receiving, password_receiving, 'Inbox') as mailbox:
+        logger.warning("Logged Into: "+username_receiving)
+        for msg in mailbox.fetch(query, mark_seen=True):
+            for att in msg.attachments:
+                if(att.content_type == "application/zip"):
+                    subjectEmail = att.filename
+                    z = zipfile.ZipFile(io.BytesIO(att.payload))
+                    
+                    logger.debug("Downloading: "+subjectEmail+" Date: "+msg.date_str)
+                    try:
+                        if not os.path.isdir(download_path):
+                            os.makedirs(download_path, exist_ok=True)
+                        z.extractall(download_path)
+                        logger.debug("Successfully Unzipped all Invoices")
                     except:
                         print(traceback.print_exc())
 
